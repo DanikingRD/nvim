@@ -1,0 +1,2 @@
+require("catppuccin")
+require("gruvbox")
