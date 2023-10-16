@@ -7,3 +7,5 @@ require("core.plugin_config.lsp")
 require("core.plugin_config.completion")
 require("core.plugin_config.autopairs")
 require("core.plugin_config.comment")
+require("core.plugin_config.todo-comments")
+
