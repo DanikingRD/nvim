@@ -7,7 +7,7 @@ require("mason-lspconfig").setup{
 local caps = require("cmp_nvim_lsp").default_capabilities()
 
 local on_attach = function(_, buf)
-	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+	vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {})
 	vim.keymap.set('n', '<leader>g', vim.lsp.buf.code_action, {})
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
