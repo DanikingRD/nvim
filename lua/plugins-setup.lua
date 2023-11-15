@@ -4,7 +4,6 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.3',
-		-- or                       , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use({
@@ -41,6 +40,15 @@ require('packer').startup(function(use)
     	"neovim/nvim-lspconfig",
 	}
 
+    use({ "glepnir/lspsaga.nvim", branch = "main" })
+    
+    -- Formatting
+    use "stevearc/conform.nvim"
+
+    -- Debugger
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui") 
+
 	-- Completion
 	use "hrsh7th/nvim-cmp"
 	use "hrsh7th/cmp-nvim-lsp"    
@@ -58,18 +66,11 @@ require('packer').startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end})
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
--- Lua
  
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-  config = function()
-    require("todo-comments").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
     }
-  end
-}
 
+    use "lewis6991/gitsigns.nvim"
 end)
