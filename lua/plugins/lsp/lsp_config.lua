@@ -21,6 +21,14 @@ return {
 		end
 		local caps = cmp.default_capabilities();
 
+		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    	for type, icon in pairs(signs) do
+      		local hl = "DiagnosticSign" .. type
+      		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    	end
+
+
+
 		lsp["clangd"].setup({
 			capabilities = caps,
 			on_attach = on_attach,
@@ -29,6 +37,19 @@ return {
 		lsp["lua_ls"].setup({
 			capabilities = caps,
 			on_attach = on_attach,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library ={
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
+					},
+				},
+			}
 		})
 	end
 	}
